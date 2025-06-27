@@ -143,7 +143,8 @@ impl RequestBuilder {
             .map_err(|err| err.into())
             .and_then(|response| response.into_string().map_err(|err| err.into()));
 
-            tx.send(response).unwrap();
+            // TODO: this always fails and often erroneously reports a failed send:
+            // tx.send(response).unwrap();
         });
 
         Request { rx }
